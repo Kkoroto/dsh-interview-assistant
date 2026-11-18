@@ -3,11 +3,12 @@
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 $libs = Join-Path $root 'libs'
-$candidates = @(
-  (Join-Path $env:DSH_PROFILE_DIR 'node_modules\dsh-cixisound\runtime\venv\Scripts\python.exe'),
-  'D:\DSH-Plugins\dsh-cixisound\runtime\venv\Scripts\python.exe',
-  (Join-Path $env:USERPROFILE 'DSH-Plugins\dsh-cixisound\runtime\venv\Scripts\python.exe')
-)
+$candidates = @()
+if ($env:DSH_PROFILE_DIR) {
+  $candidates += (Join-Path $env:DSH_PROFILE_DIR 'node_modules\dsh-cixisound\runtime\venv\Scripts\python.exe')
+}
+$candidates += 'D:\DSH-Plugins\dsh-cixisound\runtime\venv\Scripts\python.exe'
+$candidates += (Join-Path $env:USERPROFILE 'DSH-Plugins\dsh-cixisound\runtime\venv\Scripts\python.exe')
 $python = $candidates | Where-Object { $_ -and (Test-Path $_) } | Select-Object -First 1
 if (-not $python) {
   throw 'dsh-cixisound Python venv not found. Install/enable dsh-cixisound first, or pass a custom environment.'
