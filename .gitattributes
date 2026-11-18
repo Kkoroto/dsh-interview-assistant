@@ -1,0 +1,9 @@
+* text=auto
+*.exe binary
+*.onnx binary
+*.bin binary
+*.zip binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary

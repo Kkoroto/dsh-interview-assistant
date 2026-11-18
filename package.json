@@ -1,0 +1,62 @@
+{
+  "name": "dsh-live-caption",
+  "version": "1.1.3",
+  "private": true,
+  "description": "Interview assistant: listen to the interviewer, answer with the conversation model using your background, show answers in a floating overlay, and export an interview note.",
+  "license": "GPL-3.0-or-later",
+  "author": "Kkoroto",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kkoroto/dsh-interview-assistant.git"
+  },
+  "homepage": "https://github.com/Kkoroto/dsh-interview-assistant",
+  "bugs": {
+    "url": "https://github.com/Kkoroto/dsh-interview-assistant/issues"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "interview",
+    "live-caption",
+    "speech-recognition",
+    "japanese-furigana"
+  ],
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "host",
+    "engine",
+    "overlay/LiveCaptionOverlay.exe",
+    "overlay/Overlay.cs",
+    "assets/models/speaker-campplus.onnx",
+    "assets/models/sensevoice",
+    "assets/models/small",
+    "libs",
+    "cordis.patch.yml",
+    "locale",
+    "docs",
+    "icon.svg",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-sidebar-right"
+      ]
+    }
+  }
+}

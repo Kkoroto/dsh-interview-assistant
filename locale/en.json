@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Interview assistant",
+    "description": "Listens to interviewer questions and answers them with the current conversation model, using the resume, role and industry background you provide. A self-introduction trigger shows your prepared script. Stopping exports the full interview note.",
+    "detail": "docs/DETAIL.md"
+  }
+}

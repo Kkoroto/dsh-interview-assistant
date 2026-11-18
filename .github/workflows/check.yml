@@ -1,0 +1,40 @@
+name: check
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  syntax:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Node syntax
+        shell: pwsh
+        run: |
+          $files = @(
+            'index.js', 'client.js',
+            'host/engine.js', 'host/overlay.js', 'host/llm.js',
+            'host/interview.js', 'host/furigana.js', 'host/session-store.js',
+            'host/note.js', 'host/extras.js'
+          )
+          foreach ($file in $files) {
+            node --check $file
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }
+      - name: Python syntax and package JSON
+        shell: pwsh
+        run: |
+          python -c "import ast,json,pathlib; [ast.parse(p.read_text(encoding='utf-8')) for p in pathlib.Path('engine').glob('*.py')]; json.loads(pathlib.Path('package.json').read_text(encoding='utf-8')); print('ok')"
+      - name: Build overlay
+        shell: pwsh
+        run: pwsh -NoProfile -ExecutionPolicy Bypass -File ./scripts/build-overlay.ps1

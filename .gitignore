@@ -1,0 +1,50 @@
+# Runtime models and Python libraries are intentionally not committed.
+assets/models/*
+!assets/models/.gitkeep
+libs/*
+!libs/.gitkeep
+
+# Offline distribution artifacts
+*.zip
+dist*/
+release-assets/
+
+# Local interview notes / session data / profiles
+面试助手-*.md
+实时字幕-*.md
+interview-assistant.json
+.dsh/
+sessions/
+*.session.jsonl
+*.zstd
+*.log
+
+# Local probes, screenshots and temporary files
+.probe*/
+.probe*
+*.tmp
+*.bak
+*.png
+
+# Node / Python
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+runtimes/
+
+# Secrets and local configuration
+.env
+.env.*
+*.secret
+*.token
+*.pem
+*.key
+
+# Editor/OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
