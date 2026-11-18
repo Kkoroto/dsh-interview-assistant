@@ -86,7 +86,7 @@
 ### 方式 1：下载 Release 离线包（推荐）
 
 从 [Releases](https://github.com/Kkoroto/dsh-interview-assistant/releases/latest) 下载
-`面试助手-离线包-v1.1.3.zip`，解压后：
+[`interview-assistant-v1.1.3.zip`](https://github.com/Kkoroto/dsh-interview-assistant/releases/download/v1.1.3/interview-assistant-v1.1.3.zip)，解压后：
 
 1. 先安装并启用 `dsh-cixisound`；
 2. 确认 `...\dsh-cixisound\runtime\venv\Scripts\python.exe` 存在；
